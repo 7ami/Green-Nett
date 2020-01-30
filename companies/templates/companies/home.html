@@ -1,3 +1,394 @@
 {% extends 'companies/base.html' %}
 {% block title%} Mitra {% endblock %}
-{% block body %} I am Home {% endblock %}
+{% load static %}
+{%block css%}
+    header.masthead {
+        position: relative;
+        overflow: hidden;
+        padding-top: calc(7rem + 72px);
+        padding-bottom: 7rem;
+        background: linear-gradient(to bottom, rgba(22, 55, 22, 0.3) 0%, rgba(22, 22, 55, 0.7) 75%, #161616 100%), url("../static/companies/vill.jpg");
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-attachment: scroll;
+        background-size: cover;
+      }
+      
+      header.masthead .masthead-content {
+        z-index: 1;
+        position: relative;
+      }
+      
+      header.masthead .masthead-content .masthead-heading {
+        font-size: 4rem;
+      }
+      
+      header.masthead .masthead-content .masthead-subheading {
+        font-size: 2rem;
+      }
+      
+      header.masthead .bg-circle {
+        z-index: 0;
+        position: absolute;
+        border-radius: 100%;
+        background: linear-gradient(0deg, rgb(30, 120, 3) 0%, #1eff00de 100%);
+      }
+      
+      
+      @media (min-width: 992px) {
+        header.masthead {
+          padding-top: calc(10rem + 55px);
+          padding-bottom: 10rem;
+        }
+        header.masthead .masthead-content .masthead-heading {
+          font-size: 6rem;
+        }
+        header.masthead .masthead-content .masthead-subheading {
+          font-size: 4rem;
+        }
+      }
+      
+      .bg-primary {
+        background-color: rgb(30, 120, 3) !important;
+      }
+      
+      .btn-primary {
+        background-color: rgb(30, 120, 3);
+        border-color: rgb(30, 120, 3);
+      }
+      
+      .btn-primary:active, .btn-primary:focus, .btn-primary:hover {
+        background-color: #bd0760 !important;
+        border-color: #bd0760 !important;
+      }
+      .about-section {
+        padding-top: 10rem;
+        background: linear-gradient(to bottom, #1b2517 0%, rgba(34, 120, 31, 0.9) 75%, rgba(22, 120, 22, 0.8) 100%);
+      }
+      
+      .about-section p {
+        margin-bottom: 5rem;
+      }
+      
+      .btn-primary:focus {
+        box-shadow: 0 0 0 0.2rem rgba(238, 9, 121, 0.5);
+      }
+      
+      .btn-secondary {
+        background-color: #ff6a00;
+        border-color: #ff6a00;
+      }
+      
+      .btn-secondary:active, .btn-secondary:focus, .btn-secondary:hover {
+        background-color: #cc5500 !important;
+        border-color: #cc5500 !important;
+      }
+      
+      .btn-secondary:focus {
+        box-shadow: 0 0 0 0.2rem rgba(20, 106, 0, 0.5);
+      }
+{%endblock%}
+
+
+
+
+
+
+
+
+
+
+{% block body%}  
+<header class="masthead text-center text-white ">
+    <div class="masthead-content">
+      <div class="container">
+        <h1 class="masthead-heading mb-0">Green Nettle</h1>
+       <!-- <h2 class="masthead-subheading mb-0">Sustainable,Postive Impact on enviornment,Reuseable</h2>-->
+        <a href="#" class="btn btn-success btn-xl rounded-pill mt-5">Sustainable and Eco-friendly Business</a>
+        <a href="#" class="btn btn-success btn-xl rounded-pill mt-5">Positive Impact on environment</a>
+        <a href="#" class="btn btn-success btn-xl rounded-pill mt-5">Reuseable</a>
+        <a href="#" class="btn btn-success btn-xl rounded-pill mt-5">Suports Marginalized Women</a>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 order-lg-2">
+          <div class="p-5">
+            <img class="img-fluid rounded-circle" src="{% static 'companies/Allo.jpg' %}" alt="">
+          </div>
+        </div>
+        <div class="col-lg-6 order-lg-1">
+          <div class="p-5">
+            <h2 class="display-4">For those about to rock...</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <div class="p-5">
+            <img class="img-fluid rounded-circle" src="{% static 'companies/saaal.jpg' %}" alt="">
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="p-5">
+            <h2 class="display-4">We salute you!</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+   
+  <section id="tabs">
+    <div class="container">
+      <h6 class="section-title h1">Our products</h6>
+      <div class="row">
+        <div class="col-xs-12 ">
+          <nav>
+            <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+              <a class="nav-item nav-link active" id="nav-shawl-tab" data-toggle="tab" href="#nav-shawl" role="tab" aria-controls="nav-shawl" aria-selected="true">Shawls</a>
+              <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a>
+              <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
+              <a class="nav-item nav-link" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-controls="nav-about" aria-selected="false">About</a>
+            </div>
+          </nav>
+          <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-shawl" role="tabpanel" aria-labelledby="nav-shawl-tab">
+              <div class="row">
+
+                <div class="col-lg-4 col-md-6 mb-4">
+                  <div class="card h-100">
+                    <a href="#"><img class="card-img-top" src="{% static 'companies/nettleclothe1.jpg' %}" alt=""></a>
+                    <div class="card-body">
+                      <h4 class="card-title">
+                        <a href="#">Netlle Allo Cloth AAC-005</a>
+                      </h4>
+                      <h5>$11</h5>
+                      <p class="card-text"> Hand Woven Nettle Allo Cloth</p>
+                    </div>
+                    <div class="card-footer">
+                      <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                    </div>
+                  </div>
+                </div>
+            
+                <div class="col-lg-4 col-md-6 mb-4">
+                  <div class="card h-100">
+                    <a href="#"><img class="card-img-top" src="{% static 'companies/allo-shawl.jpg' %}" alt=""></a>
+                    <div class="card-body">
+                      <h4 class="card-title">
+                        <a href="#">Nettle–Shawl</a>
+                      </h4>
+                      <h5>$24.99</h5>
+                      <p class="card-text">Shawls from Allo</p>
+                    </div>
+                    <div class="card-footer">
+                      <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                    </div>
+                  </div>
+                </div>
+            
+                <div class="col-lg-4 col-md-6 mb-4">
+                  <div class="card h-100">
+                    <a href="#"><img class="card-img-top" src="{% static 'companies/allo-Shawls.jpg' %}" alt=""></a>
+                    <div class="card-body">
+                      <h4 class="card-title">
+                        <a href="#">Nettle – Shawls</a>
+                      </h4>
+                      <h5>$24.99</h5>
+                      <p class="card-text">Best Quality Shawls</p>
+                    </div>
+                    <div class="card-footer">
+                      <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                    </div>
+                  </div>
+                </div>
+       </div>      
+            </div>
+            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+              <div class="row">
+
+                <div class="col-lg-4 col-md-6 mb-4">
+                  <div class="card h-100">
+                    <a href="#"><img class="card-img-top" src="{% static 'companies/nettleclothe1.jpg' %}" alt=""></a>
+                    <div class="card-body">
+                      <h4 class="card-title">
+                        <a href="#">Netlle Allo Cloth AAC-005</a>
+                      </h4>
+                      <h5>$11</h5>
+                      <p class="card-text"> Hand Woven Nettle Allo Cloth</p>
+                    </div>
+                    <div class="card-footer">
+                      <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                    </div>
+                  </div>
+                </div>
+            
+                <div class="col-lg-4 col-md-6 mb-4">
+                  <div class="card h-100">
+                    <a href="#"><img class="card-img-top" src="{% static 'companies/allo-shawl.jpg' %}" alt=""></a>
+                    <div class="card-body">
+                      <h4 class="card-title">
+                        <a href="#">Nettle–Shawl</a>
+                      </h4>
+                      <h5>$24.99</h5>
+                      <p class="card-text">Shawls from Allo</p>
+                    </div>
+                    <div class="card-footer">
+                      <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                    </div>
+                  </div>
+                </div>
+            
+                <div class="col-lg-4 col-md-6 mb-4">
+                  <div class="card h-100">
+                    <a href="#"><img class="card-img-top" src="{% static 'companies/allo-Shawls.jpg' %}" alt=""></a>
+                    <div class="card-body">
+                      <h4 class="card-title">
+                        <a href="#">Nettle – Shawls</a>
+                      </h4>
+                      <h5>$24.99</h5>
+                      <p class="card-text">Best Quality Shawls</p>
+                    </div>
+                    <div class="card-footer">
+                      <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                    </div>
+                  </div>
+                </div>
+       </div> 
+
+
+            </div>
+            <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+              <div class="row">
+
+                <div class="col-lg-4 col-md-6 mb-4">
+                  <div class="card h-100">
+                    <a href="#"><img class="card-img-top" src="{% static 'comapnies/nettleclothe1.jpg' %}" alt=""></a>
+                    <div class="card-body">
+                      <h4 class="card-title">
+                        <a href="#">Netlle Allo Cloth AAC-005</a>
+                      </h4>
+                      <h5>$11</h5>
+                      <p class="card-text"> Hand Woven Nettle Allo Cloth</p>
+                    </div>
+                    <div class="card-footer">
+                      <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                    </div>
+                  </div>
+                </div>
+            
+                <div class="col-lg-4 col-md-6 mb-4">
+                  <div class="card h-100">
+                    <a href="#"><img class="card-img-top" src="{% static 'shop/allo-shawl.jpg' %}" alt=""></a>
+                    <div class="card-body">
+                      <h4 class="card-title">
+                        <a href="#">Nettle–Shawl</a>
+                      </h4>
+                      <h5>$24.99</h5>
+                      <p class="card-text">Shawls from Allo</p>
+                    </div>
+                    <div class="card-footer">
+                      <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                    </div>
+                  </div>
+                </div>
+            
+                <div class="col-lg-4 col-md-6 mb-4">
+                  <div class="card h-100">
+                    <a href="#"><img class="card-img-top" src="{% static 'companies/allo-Shawls.jpg' %}" alt=""></a>
+                    <div class="card-body">
+                      <h4 class="card-title">
+                        <a href="#">Nettle – Shawls</a>
+                      </h4>
+                      <h5>$24.99</h5>
+                      <p class="card-text">Best Quality Shawls</p>
+                    </div>
+                    <div class="card-footer">
+                      <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                    </div>
+                  </div>
+                </div>
+       </div> 
+
+
+            </div>
+            <div class="tab-pane fade" id="nav-about" role="tabpanel" aria-labelledby="nav-about-tab">
+              <div class="row">
+
+                <div class="col-lg-4 col-md-6 mb-4">
+                  <div class="card h-100">
+                    <a href="#"><img class="card-img-top" src="{% static 'companies/nettleclothe1.jpg' %}" alt=""></a>
+                    <div class="card-body">
+                      <h4 class="card-title">
+                        <a href="#">Netlle Allo Cloth AAC-005</a>
+                      </h4>
+                      <h5>$11</h5>
+                      <p class="card-text"> Hand Woven Nettle Allo Cloth</p>
+                    </div>
+                    <div class="card-footer">
+                      <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                    </div>
+                  </div>
+                </div>
+            
+                <div class="col-lg-4 col-md-6 mb-4">
+                  <div class="card h-100">
+                    <a href="#"><img class="card-img-top" src="{% static 'companies/allo-shawl.jpg' %}" alt=""></a>
+                    <div class="card-body">
+                      <h4 class="card-title">
+                        <a href="#">Nettle–Shawl</a>
+                      </h4>
+                      <h5>$24.99</h5>
+                      <p class="card-text">Shawls from Allo</p>
+                    </div>
+                    <div class="card-footer">
+                      <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                    </div>
+                  </div>
+                </div>
+            
+                <div class="col-lg-4 col-md-6 mb-4">
+                  <div class="card h-100">
+                    <a href="#"><img class="card-img-top" src="{% static 'companies/allo-Shawls.jpg' %}" alt=""></a>
+                    <div class="card-body">
+                      <h4 class="card-title">
+                        <a href="#">Nettle – Shawls</a>
+                      </h4>
+                      <h5>$24.99</h5>
+                      <p class="card-text">Best Quality Shawls</p>
+                    </div>
+                    <div class="card-footer">
+                      <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                    </div>
+                  </div>
+                </div>
+       </div> 
+            </div>
+          </div>
+        
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="about" class="about-section text-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h2 class="text-white mb-4">Built with Allo</h2>
+          <p class="text-white-50">We Offer you a best allo products.
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
