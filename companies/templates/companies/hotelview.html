@@ -1,0 +1,70 @@
+{% extends 'companies/base.html' %}
+
+{% block title%} {{product.name}}{% endblock %}
+{% block css %}
+       .white-text{
+
+         color: #fff;
+         cursor: pointer;
+        text-decoration: italic;
+         
+        }
+       .amir{
+         background-color: rgb(180,5,100);
+        }
+  
+
+ {% endblock %}
+{% block body %}
+<div class="container my-4">
+    <div class="row">
+    
+    <div class="col-md-4">
+        <h5 id="hnamepr{{product.id}}" >{{product.name}}</h5>
+        <p><b>Rs.{{product.price}} </b></p>
+        <p>{{product.desc}}</p>
+      <div class="row">
+        <br>
+        <br>
+        <div id='map' style='width: 400px; height: 300px;'></div>
+        <input type="hidden" id="lat" name="latVar" value="{{product.latitude}}">
+        <input type="hidden" id="lon" name="lonVar" value="{{product.longitude}}">
+        <script>
+            var lat=document.getElementById("lat").value;
+            var lon=document.getElementById("lon").value;
+            mapboxgl.accessToken = 'pk.eyJ1Ijoic2hyZXN0aGFiaWpheTI2IiwiYSI6ImNrNW52bjlxMzFlcmIzbXBsODFoOWo3a2cifQ.6nO2xputQ84oABGz22slZg';
+            var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v11',
+            center:[85.31,27.62],
+            zoom:15
+            });
+        </script>
+    </div>
+    </div>
+   
+    <div class="row col-md-8">
+        <img src="/media/{{product.img}}" width="100%" height="0px"  >
+    </div>
+    
+   
+    <div class="row">
+        <span id="divpr{{i.id}}" class ="divpr">  
+            <!--<button class="btn  white-text waves-effect waves-light amir mt-0 cart ml-automx-3">Book Now</button>-->
+            <button id="pr{{i.id}}" class="btn  white-text waves-effect waves-light amir mt-0  cart">Add To Cart</button>
+        </span>    
+    </div>
+    
+    
+
+    
+
+
+    
+    </div>
+</div>
+
+{% endblock %}
+
+
+

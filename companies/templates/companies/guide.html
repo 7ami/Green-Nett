@@ -1,0 +1,188 @@
+{% extends 'companies/base.html' %}
+
+{% block title%} 
+Guide 
+{% endblock %}
+
+{% block css %}
+.titl{
+
+      background-color:rgb(164, 5, 126);
+      text-align :center;
+      color:white;   
+
+.white-text{
+
+         color: #fff;
+         cursor: pointer;
+        text-decoration: italic;
+         
+        }
+.amir{
+         background-color: rgb(164, 5, 126);
+        }
+.mt-20 {
+    margin-top: 20px;
+    margin-bottom: 50px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.cardclass {
+    height: 150 px;
+    
+}
+
+h1{
+    font-family:Arial;
+    color:red;
+}
+{% endblock %}
+
+{% block body %}
+
+{% load static %}
+
+<!--Kathmandu Valley-->
+<div class='container titl'>
+    <p>
+        <h1> 
+            Guides Available
+        </h1>
+    </p>
+</div>
+
+
+<div class='container'>
+    <div class="row mt-20">
+        {% for guide in guides %}
+                <div class="col-4 ">
+                    <div class="cardclass card">
+                        <img class="card-img-top" src="{% static 'companies/guide.png' %}" alt="Guide image" width="70px" height="40px">
+                        <div class="card-body">
+                            <h4 class="card-title">{{guide.name}}</h4>
+                            <p class="card-text">{{guide.description}}</p>
+                            <!--<button class="btn btn-danger waves-effect  mt-0  ml-auto">{{guide.detail}}</button>-->
+                        </div>
+                    </div>
+                </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!--Pokhara
+<div class='container'>
+    <p class="texts">
+        <h1> 
+            Guides in Pokhara valley
+        </h1>
+    </p>
+</div>
+
+
+<div class='container'>
+    <div class="row mt-20">
+        {% for guide in guides %}
+                <div class="col-4 ">
+                    <div class="cardclass card">
+                        <img class="card-img-top" src="{% static 'companies/guide.png' %}" alt="Guide image" width="70px" height="40px">
+                        <div class="card-body">
+                            <h4 class="card-title">{{guide.name}}</h4>
+                            <p class="card-text">{{guide.description}}</p>
+                            <button class="btn btn-danger amir">{{guide.detail}}</button>
+                        </div>
+                    </div>
+                </div>
+        {% endfor %}
+    </div>
+</div>
+-->
+ {% endblock %}
+
+
+{% block js %}
+
+<script type ="text/javascript">
+
+if(localStorage.getItem('cart') == null){
+     var cart = {};
+}else
+{
+  cart = JSON.parse(localStorage.getItem('cart'));
+  updcart(cart);
+  }
+  
+
+$('.divpr').on('click','button.cart',function()
+{
+
+var strid = this.id.toString();
+if(cart[strid] != undefined){
+  nes =cart[strid][0] +1;
+  name ="My Item";
+  card[strid]=[nes,name];
+
+}else{
+  nes=1;
+  name = "My Item";
+  cart[strid]=[nes,name];
+}
+updcart(cart);
+
+
+});
+
+//popovering the cart
+$('#popcart').popover();
+updpopover(cart);
+
+
+//popover section
+function updpopover(cart)
+{
+   
+   var popstr = "";
+   popstr = popstr + "<h5> Cart Items:)</h5><div class='mx-2 my-2'>";
+   var z=1;
+   for(var item in cart)
+   {
+     popstr = popstr +"<b>"+z+"</b>.";
+     popstr = popstr + document.getElementById('name'+item).innerHTML.slice(0,20) + "...Qty:" + cart[item][0] +'<br>';
+     z=z+1;
+   }   
+   //popstr = popstr + "</div> <a href='/company/checkout'><button class='btn btn-success' id ='checkout'>Checkout</button></a> <button class='btn btn-success' onclick='clearCart()' id ='clearCart'>Clear Cart</button>"
+   document.getElementById('popcart').setAttribute('data-content',popstr);
+   $('#popcart').popover('show');
+
+
+}
+/*
+function clearCart() {
+    cart = JSON.parse(localStorage.getItem('cart'));
+    for (var item in cart) {
+        document.getElementById('div' + item).innerHTML = '<button id="' + item + '" class="btn btn-danger cart">Add To Cart</button>'
+    }
+    localStorage.clear();
+    location = window.location
+    cart = {};
+    updateCart(cart);
+}*/
+
+
+
+
+function updcart(cart){
+
+  var total = 0;
+  for(var item in cart){
+    total =total + cart[item][0];
+   }
+  localStorage.setItem('cart',JSON.stringify(cart));
+  document.getElementById('cart').innerHTML = total;
+  updpopover(cart);
+}
+
+
+</script>
+{% endblock %}
+

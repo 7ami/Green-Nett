@@ -1,0 +1,150 @@
+{% extends 'companies/base.html' %}
+
+{% block title%} {{product.name}}{% endblock %}
+{% block css %}
+       .white-text{
+
+         color: #fff;
+         cursor: pointer;
+        text-decoration: italic;
+         
+        }
+       .amir{
+         background-color: rgb(164, 5, 126);
+        }
+
+
+ {% endblock %}
+{% block body %}
+<div class="container my-4">
+    <div class="row">
+    <div class="col-md-4">
+    <div >
+        <h5 id="namepr{{product.id}}">{{product.name}}</h5><br>
+        <p><b>Rs.{{product.price}} </b></p>
+        <p>{{product.desc}}</p>
+    </div>
+       <div>
+        <span id="divpr{{i.id}}" class ="divpr">  
+            <!--<button class="btn  white-text waves-effect waves-light amir mt-0 cart ml-automx-3">Buy Now</button>-->
+            <button id="pr{{product.id}}"  class="btn  white-text waves-effect waves-light amir mt-0  cart ml-auto ">Add To Cart</button>
+        </span>  
+        
+        </div>
+
+
+    </div>
+        
+    
+    <div class="col-md-8 ">
+     <img src="/media/{{product.img}}" width="45%" height="10px"  >
+    </div>
+    
+        
+    </div>
+</div>
+
+{% endblock %}
+
+
+
+
+
+{% block js %}
+<script type ="text/javascript">
+
+if(localStorage.getItem('cart') == null){
+     var cart = {};
+}else
+{
+  cart = JSON.parse(localStorage.getItem('cart'));
+  updcart(cart);
+  }
+  
+
+$('.divpr').on('click','button.cart',function()
+{
+
+var strid = this.id.toString();
+if(cart[strid] != undefined){
+  nes =cart[strid][0] +1;
+  name ="My Item";
+  card[strid]=[nes,name];
+
+}else{
+  nes=1;
+  name = "My Item";
+  cart[strid]=[nes,name];
+}
+updcart(cart);
+
+
+});
+
+//popovering the cart
+$('#popcart').popover();
+updpopover(cart);
+
+
+//popover section
+function updpopover(cart)
+{
+   
+   var popstr = "";
+   popstr = popstr + "<h5> Cart Items:)</h5><div class='mx-2 my-2'>";
+   var z=1;
+   for(var item in cart)
+   {
+     
+     popstr = popstr +"<b>"+z+"</b>.";
+     popstr = popstr + document.getElementById('name'+item).innerHTML.slice(0,20) + "...Qty:" + cart[item][0] +'<br>';
+     z=z+1;
+   }   
+   
+   //popstr = popstr  +"</div> <a href='/company/checkout'><button class='btn btn-danger' id ='checkout'>Checkout</button></a> <button class='btn btn-danger' onclick='clearCart()' id ='clearCart'>Clear Cart</button>"
+   document.getElementById('popcart').setAttribute('data-content',popstr);
+   $('#popcart').popover('show');
+
+
+}
+/*
+function clearCart() {
+    cart = JSON.parse(localStorage.getItem('cart'));
+    for (var item in cart) {
+        document.getElementById('div' + item).innerHTML = '<button id="' + item + '" class="btn btn-danger cart">Add To Cart</button>'
+    }
+    localStorage.clear();
+    location = window.location
+    cart = {};
+    updateCart(cart);
+}
+*/
+
+
+function updcart(cart){
+
+  var total = 0;
+  for(var item in cart){
+    total =total + cart[item][0];
+   }
+  localStorage.setItem('cart',JSON.stringify(cart));
+  document.getElementById('cart').innerHTML = total;
+  updpopover(cart);
+}
+
+
+</script>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+

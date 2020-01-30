@@ -1,0 +1,134 @@
+
+{% extends 'companies/base.html' %}
+{% block title%} Taxis {% endblock %}
+{% block css%}
+
+        body{
+            background-color:purple
+        }
+        .white-text{
+
+         color: #fff;
+         cursor: pointer;
+        text-decoration: italic;
+         
+        }
+       .amir{
+         background-color: rgb(180,5,100);
+        }
+          .col-md-3
+          {
+          display: inline-block;
+          margin-left:-2px;
+          }
+          .carousel-indicators .active {
+          background-color: pink;
+            }
+          .col-md-3 img{
+          width:300px;
+          height:250px;
+          }
+          body .carousel-indicator li{
+          background-color: pink;
+          }
+          body .carousel-indicators{
+          bottom: 0;
+          }
+          body .carousel-control-prev-icon,
+          body .carousel-control-next-icon{
+          background-color: pink;
+          }
+
+          .carousel-control-prev,
+          .carousel-control-next{
+           top:auto;
+            bottom:auto;
+            padding-top:250px;
+          }
+
+           body .no-padding{
+           padding-left: 0,
+           padding-right: 0;
+           }
+
+
+
+
+
+ {% endblock %}
+
+
+
+
+{% block body %} 
+
+
+{% load static %}
+
+<div style="background-color:black;brightness:80"><div  style="background-image:url('https://r-cf.bstatic.com/xdata/images/xphoto/1680x1120/54218898.webp?k=fce0235d7e117b085ac5ea58b09801fbba23801e9d91e433027f1c20a365975a')">
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<h5 style="color:white;font-weight:bold">Book Your Airport Taxi</h5>
+<p style="color:white">Easy transportation between the airport and your accommodations</p>
+<br>
+<br>
+<br>
+<br>
+</div>
+</div>
+<div class="container">
+     <!--Slideshow starts here -->
+    {% for taxi,range,nSlides in allTaxis  %}
+    <h2 class="my-4" style="color:white;font-weight:bold">{{taxi.0.category}}</h2>
+  <div class="row">
+   <div id="demo{{forloop.counter}}" class="col-xs col-sm col-md carousel slide my-2" data-ride="carousel">
+    <ul class="carousel-indicators">
+      <li data-target="#demo{{forloop.counter}}" data-slide-to="0" class="active"></li>
+
+         {% for i in range %}
+        <li data-target="#demo{{forloop.parentloop.counter}}" data-slide-to="{{i}}" ></li>
+         {% endfor %}
+    </ul>
+
+   <!--for loop counter starts from 1-->
+    <div class="container carousel-inner no-padding">
+
+      <div class="carousel-item active">
+
+          {% for i in taxi%}
+        <div class="col-xs-3 col-sm-3 col-md-3">
+          <div class="card align-items-center" style="width: 19rem;">
+            <div class="card-body">
+              <img src='https://image.shutterstock.com/image-vector/taxi-vector-icon-600w-1025129527.jpg' class="card-img-top container mx-2"  alt="...">
+              <h5 class="card-title" id="namepr{{i.id}}" align='center'>Taxi No: {{i.number}}</h5>
+              <p align='center' class="card-text">Rate per meter: {{i.ratepm}}</p>
+              <p align='center' class="card=text">Phone number: {{i.phone}}</p>
+              <p align='center' class="card-text">Passengers: {{i.capacity}}</p>
+              <!--
+                 <span id="divpr{{i.id}}" class ="divpr">   
+                <button id="pr{{i.id}}" class="btn  white-text waves-effect waves-light amir cart "> Add To Cart</button> 
+                 </span> -->
+            <a href="/company/aptaxi" align='center'><button id="qv{{i.id}}" class="btn  white-text waves-effect waves-light amir mt-0 cart ml-4">Book</button></a>
+            </div>
+          </div>
+        </div>
+          {% if forloop.counter|divisibleby:4 and forloop.counter > 0 and not forloop.last %}
+      </div> <div class="carousel-item">
+           {% endif %}
+          {% endfor %}
+    </div>
+  </div>
+</div>
+
+
+   
+    <br>
+    </div>  <!--row ko-->
+     {% endfor %}
+</div>
+{% endblock %}
+

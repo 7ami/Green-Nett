@@ -1,0 +1,44 @@
+{% extends 'companies/base.html' %}
+
+{% block title%} {{place.name}}-Viewplaces{% endblock %}
+{% block css %}
+
+h1{
+    color:blue;
+}
+p{
+    font-family:Arial;
+}
+.ac{
+    border-width: 0px 0px 1px 0px;
+    display: inline-block;
+    border-style: solid;
+
+}
+ {% endblock %}
+{% block body %}
+<div class="container my-4">
+    <div class="row">
+    <div class="col-md">
+
+            <img src="/media/{{place.img}}" width="70%" height="15px"  >
+
+
+ 
+            <div class="ac">
+                <h1>{{place.name}}</h1>
+            </div>
+            <p><b><h3>Located in {{place.category}}</h3> </b></p>
+            <p><b><h4>Famous for {{place.subcategory}} </h4></b></p>
+            <p>{{place.desc}}</p>
+
+
+
+    </div>
+
+    </div>
+
+
+</div>
+
+{% endblock %}
