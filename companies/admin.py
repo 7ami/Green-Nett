@@ -1,10 +1,10 @@
 from django.contrib import admin
 from import_export.admin import ImportExportModelAdmin
-from .models import Accommo, Token, Tour, Taxi, Orders, OrderUpdate
+from .models import Token, Orders, OrderUpdate
 
 # Register your models here.
 
 
-@admin.register(Accommo, Token, Tour, Taxi, Orders, OrderUpdate)
+@admin.register(Token, Orders, OrderUpdate)
 class ViewAdmin(ImportExportModelAdmin):
     pass
