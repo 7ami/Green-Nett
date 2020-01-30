@@ -18,6 +18,16 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.10.1/css/mdb.min.css" rel="stylesheet">
     <title>{% block title%} {% endblock %}</title>
     <style>
+    .white-text{
+
+         color: #fff;
+         cursor: pointer;
+        text-decoration: italic;
+         
+        }
+    .ami{
+         background-color: rgb(190, 150, 20);
+        }
       a.navbar-brand {
           font-family: 'lobster', cursive;
           color: aliceblue;
@@ -25,17 +35,17 @@
       }
 
       .custom-nav {
-          background-color: rgb(164, 5, 126);
+          background-color: rgb(25, 160, 126);
       }
 
       .custom-dropdown button {
-          background-color: rgb(164, 5, 126);
+          background-color: rgb(25, 160, 126);
           color: aliceblue;
       }
 
       .custom-dropdown button:hover {
           color: aliceblue;
-          background-color: rgb(164, 5, 126);
+          background-color: rgb(25, 160, 126);
           ;
       }
 
@@ -56,7 +66,7 @@
 
     <header>
       <nav class="navbar navbar-expand-lg navbar-dark custom-nav sticky-top py-0 my-0">
-        <a class="navbar-brand ml-auto" href="#" ><img src="{% static 'companies/mitralogo.png' %}" width="160px" height="60px"> </a>
+        <a class="navbar-brand ml-auto" href="#" ><img src="{% static 'companies/g.png' %}" width="55px" height="25px"> </a>
        <div class="collapse navbar-collapse" id="navbarSupportedContent">
        
       <!-- <a class="navbar-brand ml-auto" href="#" ><img src="{% static 'companies/mitralogo.png' %}" width="150px" height="60px"> </a>-->
@@ -78,7 +88,7 @@
          </li>
          
        </ul>
-       <a class="navbar-brand ml-auto" href="#" ><img src="{% static 'companies/vn.png' %}" width="90px" height="40px"> </a>
+       <a class="navbar-brand ml-auto" href="#" ><img src="{% static 'companies/tt.png' %}" width="90px" height="40px"> </a>
       </div>
      
      </nav>
@@ -115,7 +125,7 @@
          <div>
          
          
-         <button type="button" id="popcart" class="btn btn-secondary mx-2" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="Vivamus
+         <button type="button" id="popcart" class="btn  white-text waves-effect waves-light ami " data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="Vivamus
      sagittis lacus vel augue laoreet rutrum faucibus.">
         Cart(<span id="cart">0</span>)
          </button>
@@ -171,7 +181,7 @@
         </div>
       </div>
        <div class="footer-copyright text-center py-3">© 2020 Copyright:
-    <a href="#"> Mitra-Nepal2020.com.np</a>
+    <a href="#"> GreenNett-Nepal2020.com.np</a>
   </div>
 
 
