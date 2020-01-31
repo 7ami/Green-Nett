@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse
-from .models import Token, Orders, OrderUpdate
+from .models import Token, Orders, OrderUpdate, Contact
 from math import ceil
 import json
 # Create your views here.
@@ -51,3 +51,21 @@ def checkout(request):
     # '''# Request paytm to transfer the amount to your account after payment by user
     # )
     # return render(request, 'shop/checkout.html')'''
+
+
+def contact(request):
+    thank = False
+    if request.method == "POST":
+        name = request.POST.get('name', '')
+        email = request.POST.get('email', '')
+        phone = request.POST.get('phone', '')
+        mess = request.POST.get('mess', '')
+        print(name, email, phone, mess)
+        contact = Contact(name=name, email=email, phone=phone, mess=mess)
+        contact.save()
+        thank = True
+    return render(request, 'companies/contact.html', {'thank': thank})
+
+
+def about(request):
+    return render(request, 'companies/about.html')

@@ -36,3 +36,14 @@ class OrderUpdate(models.Model):
 
     def __str__(self):
         return self.update_desc
+    
+    
+class Contact(models.Model):
+    msg_id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=50)
+    email = models.CharField(max_length=50, default="")
+    phone = models.CharField(max_length=50, default="")
+    mess = models.CharField(max_length=200, default="")
+
+    def __str__(self):
+        return self.name    

@@ -1,5 +1,5 @@
 {% extends 'companies/base.html' %}
-{% block title%} Token  {% endblock %}
+{% block title%} Shop  {% endblock %}
 
 {% block css%}
 
@@ -37,7 +37,7 @@
           body .carousel-indicator li{
           background-color: green;
           }
-          body .carousel-indicators{
+          body .caroushttp://127.0.0.1:8000/el-indicators{
           bottom: 0;
           }
           body .carousel-control-prev-icon,
@@ -97,9 +97,9 @@
               <p class="card-text">{{i.desc|slice:"0:20"}}...</p>
               
                  <span id="divpr{{i.id}}" class ="divpr">   
-                <button id="pr{{i.id}}" class="btn  white-text waves-effect waves-light amir cart ml-auto mt-0"> Add To Cart</button> 
+                <button id="pr{{i.id}}" class="btn  white-text waves-effect waves-light amir cart  mt-0"> Add To Cart</button> 
                  </span> 
-            <a href="/company/shopping/{{i.id}}"><button id="qv{{i.id}}" class="btn  white-text waves-effect waves-light amir mt-0 cart ml-auto">Quick - View</button></a>
+            <a href="/company/shopping/{{i.id}}"><button id="qv{{i.id}}" class="btn  white-text waves-effect waves-light amir mt-0 cart ">Quick - View</button></a>
             </div>
           </div>
         </div>
@@ -129,8 +129,8 @@
 
 
 
-{% block js %}
 
+{% block js %}
 <script type ="text/javascript">
 
 if(localStorage.getItem('cart') == null){
@@ -139,89 +139,115 @@ if(localStorage.getItem('cart') == null){
 {
   cart = JSON.parse(localStorage.getItem('cart'));
   updcart(cart);
-  }
-  
+}
 
-$('.divpr').on('click','button.cart',function()
-{
+$('.divpr').on('click', 'button.cart', function(){
+var idstr = this.id.toString();
+if( cart[idstr] != undefined){
+qty=card[idstr][0]+1;
 
-var strid = this.id.toString();
-if(cart[strid] != undefined){
-  nes =cart[strid][0] +1;
-  name ="My Item";
-  card[strid]=[nes,name];
-
-}else{
-  nes=1;
-  name = "My Item";
-  cart[strid]=[nes,name];
+} else{
+  qty=1;
+  name = document.getElementById('name'+idstr).innerHTML;
+  cart[idstr] =[qty,name];
 }
 updcart(cart);
-
-
 });
-
-//popovering the cart
+//popover to cart
 $('#popcart').popover();
 updpopover(cart);
 
+//working on popover
 
-//popover section
 function updpopover(cart)
 {
    
    var popstr = "";
-   popstr = popstr + "<h5> Cart Items:)</h5><div class='mx-2 my-2'>";
+   popstr = popstr + "<h5>Items in your Cart!</h5><div class='mx-2 my-2'>";
    var z=1;
    for(var item in cart)
    {
      popstr = popstr +"<b>"+z+"</b>.";
-     popstr = popstr + document.getElementById('name'+item).innerHTML.slice(0,20) + "...Qty:" + cart[item][0] +'<br>';
+     popstr = popstr + document.getElementById('name'+item).innerHTML.slice(0,19) + "...Qty:" + cart[item][0] +'<br>';
      z=z+1;
    }   
    
-   //popstr = popstr + "</div> <a href='/company/checkout'><button class='btn btn-danger' id ='checkout'>Checkout</button></a> <button class='btn btn-danger' onclick='clearCart()' id ='clearCart'>Clear Cart</button>"
+   popstr = popstr + "</div> <a href='/company/checkout'><button class='btn  white-text waves-effect waves-light ami tit px-2 mx-1' id ='checkout'>Checkout</button></a> <button class='btn  white-text waves-effect waves-light ami tit px-2'  id ='clearcart'>Clear Cart</button>"
    document.getElementById('popcart').setAttribute('data-content',popstr);
    $('#popcart').popover('show');
+   $.fn.tooltip.Constructor.Default.whiteList.button = []
 
 
 }
-/*
-function clearCart() {
-    cart = JSON.parse(localStorage.getItem('cart'));
-    for (var item in cart) {
-        document.getElementById('div' + item).innerHTML = '<button id="' + item + '" class="btn btn-danger cart">Add To Cart</button>'
-    }
-    localStorage.clear();
-    location = window.location
-    cart = {};
-    updateCart(cart);
-}*/
 
+$('[data-toggle="popover"]').on('shown.bs.popover', function() {
+        
+        $('#clearcart').click(function() {
+
+            
+            cart = JSON.parse(localStorage.getItem('cart'));
+            for (var item in cart) {
+                document.getElementById('div' + item).innerHTML = '<button id="' + item + '"class=btn btn-primary cart">Add To Cart</button>'
+            }
+            localStorage.clear();
+            location = window.location
+            cart = {};
+            updCart(cart);
+            
+
+        });
+    });
+
+
+//+ 5- ->UI
 function updcart(cart){
-
-  var total = 0;
-  for(var item in cart){
-    total =total + cart[item][0];
-   }
-  localStorage.setItem('cart',JSON.stringify(cart));
-  document.getElementById('cart').innerHTML = total;
-  updpopover(cart);
+   var sum = 0;
+    
+   for(var item in cart){
+      sum =sum + cart[item][0];
+      document.getElementById('div'+item).innerHTML = "<button id='minus" + item + "' class='btn  white-text waves-effect  ami minus mx-0'>-</button> <span id='val" + item + "''>" + cart[item][0] + "</span> <button id='plus" + item + "' class='btn  white-text waves-effect waves-light ami plus mx-0'> + </button>";
+    }
+    localStorage.setItem('cart',JSON.stringify(cart));
+    document.getElementById('cart').innerHTML = sum;
+    updpopover(cart);
+    //$.fn.tooltip.Constructor.Default.whiteList.button = []
 }
 
+
+//working on plus minus button
+$('.divpr').on("click","button.minus",function(){
+    
+    //id gives minusprK
+     $.fn.tooltip.Constructor.Default.whiteList.button = []
+     k=this.id.slice(7,);
+     console.log(k);
+    cart['pr' + k][0]=cart['pr' + k][0]-1;
+    cart['pr' + k][0]=Math.max(0,cart['pr'+ k][0]);
+    if(cart['pr' + k][0] ==0){
+         document.getElementById('divpr' + k).innerHTML = '<button id="pr'+k+'" class="btn  white-text waves-effect waves-light ami cart">Add to Cart</button>';
+        delete cart['pr'+k];
+    }else{
+    document.getElementById('valpr'+k).innerHTML=cart['pr'+k][0];
+    }
+    updcart(cart);
+});
+
+
+
+//working on plus plus button
+$('.divpr').on("click","button.plus",function(){
+     console.log("plus clicked");
+      $.fn.tooltip.Constructor.Default.whiteList.button = []
+     //id gives plusprq
+     q=this.id.slice(6,);
+     cart['pr'+q][0]=cart['pr'+q][0]+1;
+    document.getElementById('valpr'+q).innerHTML=cart['pr'+q][0];
+    updcart(cart);
+
+});
 
 </script>
 {% endblock %}
-
-
-
-
-
-
-
-
-
-
 
 
 
