@@ -88,15 +88,16 @@
            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
            <button class="btn btn-outline-light my-2 my-sm-0 py-2" type="submit">Search</button>
          </form>
-         <ul class="navbar-nav mr-auto">
-         <li class="nav-item">
-           <a class="nav-link" href="#">Register</a>
-         </li>
-         <li class="nav-item">
-           <a class="nav-link" href="#">Sign In</a>
-         </li>
-         
-       </ul>
+         {%if not user.is_authenticated %}
+          <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Register</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/login">Sign In</a>
+          </li>         
+        </ul>
+        {% endif %}
        <a class="navbar-brand ml-auto" href="#" ><img src="{% static 'companies/tt.png' %}" width="90px" height="40px"> </a>
       </div>
      

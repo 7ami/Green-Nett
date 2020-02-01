@@ -1,0 +1,67 @@
+{% extends 'companies/base.html'%}
+{% block title %} Login {% endblock%}
+{% block css %}
+       .outer{
+            margin-top:80px;
+       }
+
+{% endblock %}
+{% block body %} 
+
+{% for message in messages %}
+  <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    {{ message }}
+  </div>
+{% endfor %}
+
+<div class="container outer">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="well well-sm">
+                <form class="form-horizontal" name="amirform" id="amirid" method="post" action ="/login/" >
+                    {% csrf_token %}
+                    <fieldset class="box">
+                        <!-- <h2 id ="uniqu" class="card-header col-md-4 container info-color white-text text-center py-7 mt-1"><strong>Login</strong> </h2> -->
+                       
+
+                        <div class="form-group">
+                            
+                            <div class="container col-md-3 mt-3">
+                            <label>Username:</label>
+                            <input id="uname" required name="uname" type="text" placeholder="Enter UserName" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="container col-md-3 mt-3">
+                                <label>Password:</label>
+                                <input id="pass1" required name="pass1" type="password" placeholder="Enter Password" class="form-control">
+                            </div>
+                        </div>
+
+                        
+                        <div class="form-group">
+                            <div class="container col-md-5 text-center mt-2">
+                                <button type="submit" class="btn btn-primary white-text waves-effect waves-light info-color mt-0"><strong>Login</strong></button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

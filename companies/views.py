@@ -1,6 +1,10 @@
 from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, redirect
+from django.http import HttpResponseRedirect, HttpResponse
 from .models import Token, Orders, OrderUpdate, Contact
 from math import ceil
+from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
 import json
 # Create your views here.
 
@@ -51,6 +55,25 @@ def checkout(request):
     # '''# Request paytm to transfer the amount to your account after payment by user
     # )
     # return render(request, 'shop/checkout.html')'''
+
+
+def loginhandle(request):
+
+    if request.method == "POST":
+        uname = request.POST.get("uname")
+        pass1 = request.POST.get("pass1")
+        user = authenticate(username=uname, password=pass1)
+        if user is not None:
+            login(request, user)
+            # print(uname, pass1)
+            return redirect("token")
+        else:
+            messages.error(request, "Invalid,please try again")
+            # print(uname, pass1)
+
+    return render(request, "companies/login.html")
+
+
 
 
 def contact(request):
